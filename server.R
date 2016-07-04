@@ -49,25 +49,24 @@ output$norm <- renderPlot({
   X<-rnorm(n,mean,var)
   
   MLEnorm <- function(mu,sigma2){
-    n<- length(X)
     SumX<-0
-    for(i in 1:length(X)){
+    for(i in 1:n){
       SumX<-SumX + (X[i]-mean)^2
     }
-    T <- -(n/2)*log(2*pi) -(n/2)*log(sigma2) -(1/(2*sigma2))*(SumX)
+    T <- -(n/2)*log(2*pi) -(n/2)*log(sigma2) - (1/(2*sigma2))*(SumX)
     return(T)
   } 
   #estimadores de máxima verossimilhança
   mean(X)
   sd(X)
   #Gráfico da função de máxima verossimilhança
-  g <- expand.grid(x = -20:20, y = 1:30, gr = 3:5)
+  g <- expand.grid(x = -20:20, y = 1:30, gr = 1:5)
   g$z <- MLEnorm(mu=g$x,sigma2=g$y)
 
   wireframe(z ~ x * y, data = g, groups = gr,
             scales = list(arrows = FALSE),
             drape = TRUE, colorkey = TRUE,
-            screen = list( x = x,y=y,z=z))
+            screen = list( x = x,y= y,z= z),zlab="haha")
   
 })
 

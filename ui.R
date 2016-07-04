@@ -17,7 +17,7 @@ shinyUI(navbarPage("Estimação de parâmetros",
                             
                             fluidRow(column(3,selectInput("select", label = h3("Escolha uma Distribuição"), 
                                                           choices = list("Geometrica" = "Geometrica", "Normal" = "Normal",
-                                                                         "Beta" = "Beta"), selected = "Beta"))),
+                                                                         "Beta" = "Beta"), selected = "Geometrica"))),
                             
                             
                             conditionalPanel(condition="input.select=='Geometrica'",
@@ -55,11 +55,14 @@ shinyUI(navbarPage("Estimação de parâmetros",
                                                column(3,
                                                       wellPanel(
                                                         
-                                                        helpText("Defina um tamanho da amostra e o parâmetro p"),
+                                                        helpText("Defina um tamanho da amostra, média e variância"),
                                                         numericInput("n", label="tamanho da amostra", value=10),
-                                                        #shinyalert("shinyalert2", TRUE, auto.close.after=10),
-                                                        numericInput("prob", label="valor de p entre (0,1)", value=0.5, min=0,max=1)
-                                                        
+                                                        numericInput("mean", label="média", value=0),
+                                                        numericInput("var", label="variância", value=1,min=0),
+                                                        helpText("Defina x,y,z ângulos do gráfico"),
+                                                        numericInput("x", label="x", value=10),
+                                                        numericInput("y", label="y", value=30),
+                                                        numericInput("z", label="z", value=15)
                                                         
                                                       )),
                                                column(9,
@@ -68,7 +71,7 @@ shinyUI(navbarPage("Estimação de parâmetros",
                                                                               da distribuição geométrica. Sua densidade é dada por: $$P(X=x) = p(1-p)^x ,   x=0,1,...$$"),
                                                                             p("O gráfico de log-verossimilhança é criado a partir de uma amostra aleatória de tamanho n, a linha vermelha indica
                                                                               o valor verdadeiro do parâmetro e a linha azul indica o valor do estimador de máxima verossimilhança obtido a partir da amostra.")),
-                                                                plotOutput("asas"),
+                                                                plotOutput("norm"),
                                                                 br(),
                                                                 p("Pode-se notar que quando o tamanho da amostra aumenta o estimador de máxima verossimilhança se aproxima do valor verdadeiro do parâmetro.")
                                                                 
@@ -85,12 +88,14 @@ shinyUI(navbarPage("Estimação de parâmetros",
                                                column(3,
                                                       wellPanel(
                                                         
-                                                        helpText("Defina um tamanho da amostra e o parâmetro p"),
+                                                        helpText("Defina um tamanho da amostra, e os parâmetros da Beta"),
                                                         numericInput("n", label="tamanho da amostra", value=10),
-                                                        #shinyalert("shinyalert2", TRUE, auto.close.after=10),
-                                                        numericInput("prob", label="valor de p entre (0,1)", value=0.5, min=0,max=1)
-                                                        
-                                                        
+                                                        numericInput("Alpha", label="Alpha", value=2,min=0),
+                                                        numericInput("Beta", label="Beta", value=2,min=0),
+                                                        helpText("Defina x,y,z ângulos do gráfico"),
+                                                        numericInput("x", label="x", value=10),
+                                                        numericInput("y", label="y", value=30),
+                                                        numericInput("z", label="z", value=15)
                                                       )),
                                                column(9,
                                                       wellPanel(h3("Máxima Verossimilhança para Distribuição Geometrica"),
@@ -98,7 +103,7 @@ shinyUI(navbarPage("Estimação de parâmetros",
                                                               da distribuição geométrica. Sua densidade é dada por: $$P(X=x) = p(1-p)^x ,   x=0,1,...$$"),
                                                                             p("O gráfico de log-verossimilhança é criado a partir de uma amostra aleatória de tamanho n, a linha vermelha indica
                                                              o valor verdadeiro do parâmetro e a linha azul indica o valor do estimador de máxima verossimilhança obtido a partir da amostra.")),
-                                                                plotOutput("as"),
+                                                                plotOutput("beta"),
                                                                 br(),
                                                                 p("Pode-se notar que quando o tamanho da amostra aumenta o estimador de máxima verossimilhança se aproxima do valor verdadeiro do parâmetro.")
                                                                 
