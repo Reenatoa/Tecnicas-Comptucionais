@@ -60,9 +60,9 @@ shinyUI(navbarPage("Estimação de parâmetros",
                                                         numericInput("mean", label="média", value=0),
                                                         numericInput("var", label="variância", value=1,min=0),
                                                         helpText("Defina x,y,z ângulos do gráfico"),
-                                                        numericInput("x", label="x", value=10),
-                                                        numericInput("y", label="y", value=30),
-                                                        numericInput("z", label="z", value=15)
+                                                        numericInput("x", label="x", value=45),
+                                                        numericInput("y", label="y", value=45),
+                                                        numericInput("z", label="z", value=90)
                                                         
                                                       )),
                                                column(9,
@@ -91,9 +91,9 @@ shinyUI(navbarPage("Estimação de parâmetros",
                                                         numericInput("Alpha", label="Alpha", value=2,min=0),
                                                         numericInput("Beta", label="Beta", value=2,min=0),
                                                         helpText("Defina x,y,z ângulos do gráfico"),
-                                                        numericInput("x1", label="x", value=10),
-                                                        numericInput("y1", label="y", value=30),
-                                                        numericInput("z1", label="z", value=15)
+                                                        numericInput("x1", label="x", value=45),
+                                                        numericInput("y1", label="y", value=45),
+                                                        numericInput("z1", label="z", value=90)
                                                       )),
                                                column(9,
                                                       wellPanel(h3("Máxima Verossimilhança para Distribuição Geometrica"),

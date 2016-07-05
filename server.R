@@ -108,9 +108,9 @@ output$beta <- renderPlot({
     return(T)
   }
   
-  g <- expand.grid(alpha = seq(Alpha-3*sd(X),Alpha+3*sd(X),length=50)  , beta = seq(1,2*Beta,length=50), gr = 1:5)
+  g <- expand.grid(alpha = seq(Alpha-3*sd(X),Alpha+3*sd(X),length=50)  , beta = seq(1,2*Beta,length=50), gr = 1:3)
   g$z <- MLEwire(Alpha=g$alpha,Beta=g$beta)
-  wireframe(z ~ Alpha * Beta, data = g, groups = gr,
+  wireframe(z ~ alpha * beta, data = g, groups = gr,
             scales = list(arrows = FALSE),
             drape = TRUE, colorkey = TRUE,
             screen = list(z = z1, y= y1, x = x1))
